@@ -7,21 +7,31 @@ blogs="https://academy-project-blogs.s3-eu-west-1.amazonaws.com/teaching_code.py
 #   echo "$line"
 # done < "$input"
 
-# if [ -s blog1 ]; then
-#         # The file is not-empty.
-#         echo "the file is not-empty"
-# else
-#         # The file is empty.
-#         echo "the file is empty"
-#         echo blog1
-# fi
+
 
 for b in $blogs
 do
+echo cat ${b}
     if [ "${b##*.}" == "py" ] || [  "${b##*.}" == "exe" ]; then
         echo "This file format can not be uploaded"
     else
-        echo "the file is good"
+        CONTENT=$(curl ${b})
+        # echo $CONTENT
+        # "cat $CONTENT"    
+        if [ -s $CONTENT  ]; then
+        echo "not empty"
+        fi
     fi
 done
 
+# check if content is 0
+# check how many files in data and save as file.txt
+
+# if [ -s blog1 ]; then
+#         .
+#         echo "the file is not-empty"
+# else
+        
+#         echo "the file is empty"
+  
+# fi
