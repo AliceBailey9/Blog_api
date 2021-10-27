@@ -9,7 +9,7 @@ const fetchAllBlogs = (cb) => {
         else {
           allBlogs.push({
             title: blogFile.slice(0, blogFile.length - 4),
-            RScontent: content,
+            content: content,
           });
           if (allBlogs.length === blogFiles.length) {
             cb(null, allBlogs);

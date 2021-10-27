@@ -25,7 +25,6 @@ const postBlog = (req, res) => {
 
 const getBlog = (req, res) => {
   const { title } = req.params;
-  console.log(title);
   getTheBlog(title, (err, blog) => {
     if (err) console.log(err);
     else {
