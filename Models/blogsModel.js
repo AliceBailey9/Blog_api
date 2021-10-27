@@ -20,4 +20,12 @@ const fetchAllBlogs = (cb) => {
   });
 };
 
-module.exports = fetchAllBlogs;
+const postTheBlog = (newBlog, cb) => {
+  fs.writeFile(`./Data/${newBlog.title}.txt`, newBlog.content, (err) => {
+    if (err) console.log(err);
+    else {
+      cb(null, "Success");
+    }
+  });
+};
+module.exports = { fetchAllBlogs, postTheBlog };

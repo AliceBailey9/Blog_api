@@ -10,7 +10,8 @@ do
         echo "This file format can not be uploaded"
         continue 
     fi
-        echo "this worked"
+    
+    echo "this worked"
     
     CONTENTLENGTH= curl -sI ${b} | grep -i Content-Length | awk '{print $2}'
 
@@ -25,4 +26,4 @@ do
 filename="${file%.*}"
 mv -v "$file" "${filename}.txt"
 
-done 
+done
