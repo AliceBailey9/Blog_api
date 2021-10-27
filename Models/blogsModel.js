@@ -9,7 +9,7 @@ const fetchAllBlogs = (cb) => {
         else {
           allBlogs.push({
             title: blogFile.slice(0, blogFile.length - 4),
-            content: content,
+            RScontent: content,
           });
           if (allBlogs.length === blogFiles.length) {
             cb(null, allBlogs);
@@ -28,4 +28,15 @@ const postTheBlog = (newBlog, cb) => {
     }
   });
 };
-module.exports = { fetchAllBlogs, postTheBlog };
+
+const getTheBlog = (title, cb) => {
+  const blog = { title: title };
+  fs.readFile(`./Data/${title}.txt`, "utf8", (err, content) => {
+    if (err) console.log(err);
+    else {
+      blog["content"] = content;
+      cb(null, blog);
+    }
+  });
+};
+module.exports = { fetchAllBlogs, postTheBlog, getTheBlog };

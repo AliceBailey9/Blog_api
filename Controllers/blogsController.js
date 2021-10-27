@@ -1,4 +1,8 @@
-const { fetchAllBlogs, postTheBlog } = require("../Models/blogsModel");
+const {
+  fetchAllBlogs,
+  postTheBlog,
+  getTheBlog,
+} = require("../Models/blogsModel");
 
 const getAllBlogs = (req, res) => {
   fetchAllBlogs((err, blogs) => {
@@ -19,4 +23,15 @@ const postBlog = (req, res) => {
   });
 };
 
-module.exports = { getAllBlogs, postBlog };
+const getBlog = (req, res) => {
+  const { title } = req.params;
+  console.log(title);
+  getTheBlog(title, (err, blog) => {
+    if (err) console.log(err);
+    else {
+      res.status(200).send(blog);
+    }
+  });
+};
+
+module.exports = { getAllBlogs, postBlog, getBlog };
