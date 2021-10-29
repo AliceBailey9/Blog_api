@@ -18,7 +18,7 @@ const postBlog = (req, res) => {
   postTheBlog(blog, (err, msg) => {
     if (err) console.log(err);
     else {
-      res.status(200).send(msg);
+      res.status(201).send(msg);
     }
   });
 };
