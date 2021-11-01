@@ -12,7 +12,7 @@ do
     fi
     
     echo "this worked"
-    
+    # request header
     CONTENTLENGTH= curl -sI ${b} | grep -i Content-Length | awk '{print $2}'
 
     if [ "$CONTENTLENGTH" != "0" ]; then 
